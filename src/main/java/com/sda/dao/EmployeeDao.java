@@ -37,7 +37,6 @@ public class EmployeeDao {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             session.beginTransaction();
             Integer id = (Integer) session.save(employee);
-            //System.out.println("Employee was created with id: " + id);
             session.getTransaction().commit();
             if (id != null) {
                 employee1 = session.get(Employee.class, id);
@@ -52,46 +51,34 @@ public class EmployeeDao {
     }
 
     public boolean deleteEmployee(String name) {
-        boolean isDeleted = false; // ok
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) { // ok
-            session.beginTransaction(); // ok
-            /*
-            String hql = "FROM Employee WHERE nameOfEmployee=:nameOfEmployee"; // not ok
-            Query query = session.createQuery(hql); // not
-            query.setParameter("nameOfEmployee", name); //not
-            List<Employee> employeeList = query.list(); //not
+        boolean isDeleted = false;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            session.beginTransaction();
 
-             */
-
-            String countHQL = "SELECT COUNT(*) FROM Employee where nameOfEmployee =: nameOfEmployee"; // numara intrarile in BD
+            String countHQL = "SELECT COUNT(*) FROM Employee where nameOfEmployee =: nameOfEmployee";
             Query countQuery = session.createQuery(countHQL);
             countQuery.setParameter("nameOfEmployee", name);
-            Long countResult = (Long) countQuery.uniqueResult(); // numarul de intrari in BD
-            if (countResult != 1) { // daca avem doar o singura intrare in baza de date
-                isDeleted = false; // daca avem mai multe intrari in baza de date sau nici una , nu mai stergem
-            } else { // avem o singura intrare in baza de date
-                String deleteHQL = "DELETE FROM Employee WHERE nameOfEmployee =:nameOfEmployee"; // sterge intrarea din baza de date cu numele trimis ca parametru
+            Long countResult = (Long) countQuery.uniqueResult();
+            if (countResult != 1) {
+                isDeleted = false;
+            } else {
+                String deleteHQL = "DELETE FROM Employee WHERE nameOfEmployee =:nameOfEmployee";
                 Query deleteQuery = session.createQuery(deleteHQL);
                 deleteQuery.setParameter("nameOfEmployee", name);
-                int result = deleteQuery.executeUpdate(); // se executa query ul || in result retinem numarul de linii sterse
-                if (result != 0) { // s-a sters intrarea in baza de date
+                int result = deleteQuery.executeUpdate();
+                if (result != 0) {
                     isDeleted = true;
-                } else { // nu s a sters nicio intrare in baza de date
+                } else {
                     isDeleted = false;
                 }
             }
 
-            /*if (employeeList.size() > 1 || employeeList.size() == 0) { //not ok
-                isDeleted = false; //not ok
-            } else {
-                session.delete(employeeList.get(0)); // not ok
-                isDeleted = true; // not ok
-            }*/
-            session.getTransaction().commit(); //ok
+
+            session.getTransaction().commit();
         } catch (HibernateException e) {
-            e.printStackTrace(); //ok
+            e.printStackTrace();
         }
-        return isDeleted; //ok
+        return isDeleted;
     }
 
     public boolean deleteEmployeeByNameAndPosition(String name, String position) {

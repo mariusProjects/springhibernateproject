@@ -14,17 +14,5 @@ public class DepartmentDTO {
         this.nameOfDepartment = nameOfDepartment;
     }
 
-    /*public Employee getEmployee() {
-        return employee;
-    }
 
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }*/
-
-    /*@Override
-    public String toString() {
-        return " Numele departamentului este " + nameOfDepartment +
-                " si managerul este " + employee.getNameOfEmployee();
-    }*/
 }

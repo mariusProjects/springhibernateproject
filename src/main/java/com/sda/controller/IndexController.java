@@ -6,8 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 public class IndexController {
-    @RequestMapping({"", "/", "/index"}) // face maparea dintre requestul din browser si resursa din aplicatie
-    // / arata ca e prima pagina care se deschide cand accesam localhost
+    @RequestMapping({"", "/", "/index"})
     public String getIndexPage() {
         return "index";
     }

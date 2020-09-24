@@ -14,12 +14,12 @@ public class EmployeeController {
     @Autowired
     public EmployeeService employeeService;
 
-    @RequestMapping("/employees") // face legatura cu front-end
-    @ResponseBody // aceste 2 annotari ne spun ca primeste request-ul si creaza un raspuns
+    @RequestMapping("/employees")
+    @ResponseBody
     public ResponseEntity displayEmployees() {
         List<EmployeeDTO> employeeDTOList = employeeService.displayEmployeeDTO();
 
-        return new ResponseEntity(employeeDTOList, HttpStatus.OK); // trimite status 200
+        return new ResponseEntity(employeeDTOList, HttpStatus.OK);
     }
 
     @PostMapping(consumes = "application/json", produces = "application/json", path = "/createEmployee")

@@ -13,7 +13,6 @@ public class EmployeeMapper {
         employeeDTO.setNameOfEmployee(employee.getNameOfEmployee());
         employeeDTO.setPosition(employee.getPosition());
         employeeDTO.setAge(employee.getAge());
-        /*  employeeDTO.setDepartment(employee.getDepartment());*/
         return employeeDTO;
     }
 
@@ -22,7 +21,6 @@ public class EmployeeMapper {
         employee.setNameOfEmployee(employeeDTO.getNameOfEmployee());
         employee.setAge(employeeDTO.getAge());
         employee.setPosition(employeeDTO.getPosition());
-        /*employee.setDepartment(employeeDTO.getDepartment());*/
         return employee;
     }
 }

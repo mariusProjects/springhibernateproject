@@ -12,7 +12,6 @@ public class DepartmentMapper {
     public DepartmentDTO convertDepartmentToDepartmentDTO(Department department) {
         DepartmentDTO departmentDTO = new DepartmentDTO();
         departmentDTO.setNameOfDepartment(department.getNameOfDepartment());
-        //departmentDTO.setEmployee(department.getEmployee());
         return departmentDTO;
     }
 

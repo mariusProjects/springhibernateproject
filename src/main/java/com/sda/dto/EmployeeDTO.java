@@ -7,7 +7,7 @@ public class EmployeeDTO {
     private String nameOfEmployee;
     private String position;
     private Integer age;
-   /* private Department department;*/
+
 
     public String getNameOfEmployee() {
         return nameOfEmployee;
@@ -33,13 +33,6 @@ public class EmployeeDTO {
         this.age = age;
     }
 
-   /* public Department getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(Department department) {
-        this.department = department;
-    }*/
 
     @Override
     public String toString() {

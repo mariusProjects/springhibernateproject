@@ -15,11 +15,11 @@ public class DepartmentsController {
     public DepartmentService departmentService;
 
     @RequestMapping("/departments")
-    @ResponseBody // astea 2 annotari ne spune ca primeste reuest-ul si creaza un raspuns
+    @ResponseBody
     public ResponseEntity displayDepartments() {
         List<DepartmentDTO> departmentDTOList = departmentService.displayDepartmentsDTO();
 
-        return new ResponseEntity(departmentDTOList, HttpStatus.OK); // trimite status 200
+        return new ResponseEntity(departmentDTOList, HttpStatus.OK);
     }
 
     @PostMapping(consumes = "application/json", produces = "application/json", path = "/createDepartment")
